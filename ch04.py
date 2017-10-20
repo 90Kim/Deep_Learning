@@ -94,15 +94,24 @@ plt.plot(x,y) + (plt.xlabel("x") + plt.ylabel("f(x)"))
 numerical_diff(function_1, 5)
 numerical_diff(function_1, 10)
 
-##### 4.4 기울기
-
 def function_2(x):
-    return np.sum(x**2)
+    return x[0]**2 + x[1]**2
 
+def function_tmp1(x0):
+    return x0*x0 + 4.0**2.0
+
+numerical_diff(function_tmp1, 3.0)
+
+def function_tmp2(x1):
+    return 3.0**2.0 + x1*x1
+
+numerical_diff(function_tmp2, 4.0)
+
+##### 4.4 기울기
 
 def numerical_gradient(f, x):
     h = 1e-4
-    grad = np.zeros_like(x)
+    grad = np.zeros_like(x)  # x와 형상이 같은 배열을 생성
     
     for idx in range(x.size):
         tmp_val = x[idx]

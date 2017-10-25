@@ -225,7 +225,7 @@ class TwoLayerNet:
         y = np.argmax(y, axis = 1)
         if t.ndim != 1 : t = np.argmax(t, axis = 1)
 
-        accuracy = np.sum(y==t) / float(x.shpae[0])
+        accuracy = np.sum(y==t) / float(x.shape[0])
         return accuracy
     
     # x : 입력 데이터 / t : 정답 레이블
@@ -278,6 +278,10 @@ for key in grad_numerical.keys():
     
     
 ### 5.7.4 오차역전파법을 사용한 학습 구현
+    
+from dataset.mnist import load_mnist
+(x_train, t_train), (x_test, t_test) = load_mnist(normalize=True, one_hot_label=True)
+network = TwoLayerNet(input_size=784, hidden_size=50, output_size=10)
 
 iters_num = 10000
 train_size = x_train.shape[0]
